@@ -14,10 +14,5 @@ namespace Business.ValidationRules.FluentValidation
         {
             //RuleFor(p => p.Name).NotEmpty();
         }
-
-        private bool StartWidthA(string arg)
-        {
-            return arg.StartsWith("A");
-        }
     }
 }

@@ -8,7 +8,14 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string x = "x";
-        internal static string? AuthorizationDenied;
+        //Authorization Messages
+        public static string AuthorizationDenied = "Yetki Reddedildi!";
+
+        // CategoryManager Business Messages
+        public static string CategoryAdded = "Yeni Kategori Eklendi!";
+        public static string CategoriesListed = "Kategoriler Listelendi!";
+        public static string CategoryUpdated = "Kategori Güncellendi!";
+        public static string SelectedCategory = "Seçilen Kategori Alındı!";
+
     }
 }
