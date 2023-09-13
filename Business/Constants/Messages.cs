@@ -57,5 +57,13 @@ namespace Business.Constants
         internal static string SalesListed = "Satışlar Listelendi!";
         internal static string SelectedSale = "Seçilen Satış Getirildi!";
         internal static string SaleUpdated = "Satış Bilgileri Güncellendi!";
+
+        //SectorManager Business Messages
+        internal static string SectorAdded = "Yeni Sektör Eklendi!";
+        internal static string SectorDeleted = "Seçilen Sektör Silindi";
+        internal static string SectorNotFound = "Sektör Bulunamadı!";
+        internal static string SectorsListed = "Sekörler Listelendi!";
+        internal static string SelectedSector = "Seçili Sektör Alındı!";
+        internal static string SectorUpdated = "Sektör Bilgisi Güncellendi!";
     }
 }
