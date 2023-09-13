@@ -43,6 +43,11 @@ namespace Business.Constants
         public static string OfferUpdated = "Teklif Bilgisi Güncellendi!";
         public static string OfferNotFound = "Teklif Bulunamadı!";
 
-        //
+        //ProductManager Business Messages
+        internal static string ProductAdded = "Ürün Eklendi!";
+        internal static string ProductDeleted = "Seçilen Ürün Silindi!";
+        internal static string ProductsListed = "Ürünler Listelendi!";
+        internal static string SelectedProduct = "Seçilen Ürün Alındı!";
+        internal static string ProductUpdated = "Ürün Bilgisi Güncellendi!";
     }
 }
