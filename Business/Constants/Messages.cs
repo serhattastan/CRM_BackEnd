@@ -51,19 +51,27 @@ namespace Business.Constants
         public static string ProductUpdated = "Ürün Bilgisi Güncellendi!";
 
         //SaleManager Business Messages
-        internal static string SaleAdded = "Satış Eklendi!";
-        internal static string SaleDeleted = "Satış Silindi!";
-        internal static string SaleNotFound = "Satış Bulunamadı!";
-        internal static string SalesListed = "Satışlar Listelendi!";
-        internal static string SelectedSale = "Seçilen Satış Getirildi!";
-        internal static string SaleUpdated = "Satış Bilgileri Güncellendi!";
+        public static string SaleAdded = "Satış Eklendi!";
+        public static string SaleDeleted = "Satış Silindi!";
+        public static string SaleNotFound = "Satış Bulunamadı!";
+        public static string SalesListed = "Satışlar Listelendi!";
+        public static string SelectedSale = "Seçilen Satış Getirildi!";
+        public static string SaleUpdated = "Satış Bilgileri Güncellendi!";
 
         //SectorManager Business Messages
-        internal static string SectorAdded = "Yeni Sektör Eklendi!";
-        internal static string SectorDeleted = "Seçilen Sektör Silindi";
-        internal static string SectorNotFound = "Sektör Bulunamadı!";
-        internal static string SectorsListed = "Sekörler Listelendi!";
-        internal static string SelectedSector = "Seçili Sektör Alındı!";
-        internal static string SectorUpdated = "Sektör Bilgisi Güncellendi!";
+        public static string SectorAdded = "Yeni Sektör Eklendi!";
+        public static string SectorDeleted = "Seçilen Sektör Silindi";
+        public static string SectorNotFound = "Sektör Bulunamadı!";
+        public static string SectorsListed = "Sekörler Listelendi!";
+        public static string SelectedSector = "Seçili Sektör Alındı!";
+        public static string SectorUpdated = "Sektör Bilgisi Güncellendi!";
+
+        //CommunicationHistoryManager Business Messages
+        public static string CommunicationHistoryAdded = "İletişim Geçmişi Bilgisi Eklendi!";
+        public static string CommunicationHistoryDeleted = "İletişim Geçmişi Bilgisi Silindi!";
+        public static string CommunicationHistoryNotFound = "İletişim Geçmişi Bilgisi Bulunamadı!";
+        public static string CommunicationHistoryListed = "İletişim Geçmişi Listelendi!";
+        public static string SelectedCommunicationHistory = "Seçili İletişim Geçmişi Bilgisi Alındı!";
+        public static string CommunicationHistoryUpdated = "İletişim Geçmişi Bilgisi Güncellendi!";
     }
 }
