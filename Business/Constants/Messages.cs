@@ -20,19 +20,29 @@ namespace Business.Constants
         public static string CategoryNotFound = "Kategori Bilgisi Bulunamadı!";
 
         //CompanyManager Bussiness Messages
-        internal static string CompanyAdded = "Yeni Şirket Eklendi!";
-        internal static string CompanyNotFound = "Şirket Bulunamadı!";
-        internal static string CompanyDeleted = "Seçilen Şirket Silindi!";
-        internal static string CompaniesListed = "Şirketler Listelendi!";
-        internal static string SelectedCompany = "Seçilen Şirket Alındı!";
-        internal static string CompanyUpdated = "Şirket Bilgisi Güncellendi!";
+        public static string CompanyAdded = "Yeni Şirket Eklendi!";
+        public static string CompanyNotFound = "Şirket Bulunamadı!";
+        public static string CompanyDeleted = "Seçilen Şirket Silindi!";
+        public static string CompaniesListed = "Şirketler Listelendi!";
+        public static string SelectedCompany = "Seçilen Şirket Alındı!";
+        public static string CompanyUpdated = "Şirket Bilgisi Güncellendi!";
 
         //CustomerManager Business Messages
-        internal static string CustomerAdded = "Yeni Müşteri Eklendi!";
-        internal static string CustomersListed = "Müşteriler Listelendi!";
-        internal static string CustomerDeleted = "Seçilen Müşteri Silindi!";
-        internal static string CustomerNotFound = "Müşteri Bulunamadı!";
-        internal static string SelectedCustomer = "Seçilen Müşteri Alındı!";
-        internal static string CustomerUpdated = "Müşteri Bilgisi Güncellendi!";
+        public static string CustomerAdded = "Yeni Müşteri Eklendi!";
+        public static string CustomersListed = "Müşteriler Listelendi!";
+        public static string CustomerDeleted = "Seçilen Müşteri Silindi!";
+        public static string CustomerNotFound = "Müşteri Bulunamadı!";
+        public static string SelectedCustomer = "Seçilen Müşteri Alındı!";
+        public static string CustomerUpdated = "Müşteri Bilgisi Güncellendi!";
+
+        //OfferManager Business Messages
+        public static string OfferDeleted = "Seçilen Teklif Silindi!";
+        public static string OfferAdded = "Yeni Teklif Eklendi!";
+        public static string OffersListed = "Teklifler Listelendi!";
+        public static string SelectedOffer = "Seçilen Teklif Alındı!";
+        public static string OfferUpdated = "Teklif Bilgisi Güncellendi!";
+        public static string OfferNotFound = "Teklif Bulunamadı!";
+
+        //
     }
 }
