@@ -44,10 +44,18 @@ namespace Business.Constants
         public static string OfferNotFound = "Teklif Bulunamadı!";
 
         //ProductManager Business Messages
-        internal static string ProductAdded = "Ürün Eklendi!";
-        internal static string ProductDeleted = "Seçilen Ürün Silindi!";
-        internal static string ProductsListed = "Ürünler Listelendi!";
-        internal static string SelectedProduct = "Seçilen Ürün Alındı!";
-        internal static string ProductUpdated = "Ürün Bilgisi Güncellendi!";
+        public static string ProductAdded = "Ürün Eklendi!";
+        public static string ProductDeleted = "Seçilen Ürün Silindi!";
+        public static string ProductsListed = "Ürünler Listelendi!";
+        public static string SelectedProduct = "Seçilen Ürün Alındı!";
+        public static string ProductUpdated = "Ürün Bilgisi Güncellendi!";
+
+        //SaleManager Business Messages
+        internal static string SaleAdded = "Satış Eklendi!";
+        internal static string SaleDeleted = "Satış Silindi!";
+        internal static string SaleNotFound = "Satış Bulunamadı!";
+        internal static string SalesListed = "Satışlar Listelendi!";
+        internal static string SelectedSale = "Seçilen Satış Getirildi!";
+        internal static string SaleUpdated = "Satış Bilgileri Güncellendi!";
     }
 }
