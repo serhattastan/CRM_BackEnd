@@ -5,6 +5,7 @@ using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,29 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+
+            builder.RegisterType<CommunicationHistoryManager>().As<ICommunicationHistoryService>().SingleInstance();
+            builder.RegisterType<EfCommunicationHistoryDal>().As<ICommunicationHistoryDal>().SingleInstance();
+
+            builder.RegisterType<CompanyManager>().As<ICompanyService>().SingleInstance();
+            builder.RegisterType<EfCompanyDal>().As<ICompanyDal>().SingleInstance();
+
+            builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
+            builder.RegisterType<EfCustomerDal>().As<ICustomerDal>().SingleInstance();
+
+            builder.RegisterType<OfferManager>().As<IOfferService>().SingleInstance();
+            builder.RegisterType<EfOfferDal>().As<IOfferDal>().SingleInstance();
+
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
-            builder.RegisterType<IProductDal>().As<IProductDal>().SingleInstance();
+            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
 
+            builder.RegisterType<SaleManager>().As<ISaleService>().SingleInstance();
+            builder.RegisterType<EfSaleDal>().As<ISaleDal>().SingleInstance();
 
+            builder.RegisterType<SectorManager>().As<ISectorService>().SingleInstance();
+            builder.RegisterType<EfSectorDal>().As<ISectorDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
