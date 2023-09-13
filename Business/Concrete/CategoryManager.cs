@@ -29,11 +29,11 @@ namespace Business.Concrete
 
         public IResult Delete(int categoryId)
         {
-            var categoryToDelete = _categoryDal.Get(p => p.Id == categoryId);
+            var dataDelete = _categoryDal.Get(p => p.Id == categoryId);
 
-            if (categoryToDelete != null)
+            if (dataDelete != null)
             {
-                _categoryDal.Delete(categoryToDelete);
+                _categoryDal.Delete(dataDelete);
                 return new SuccessResult(Messages.CategoryDeleted);
             }
 
