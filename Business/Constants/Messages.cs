@@ -73,5 +73,8 @@ namespace Business.Constants
         public static string CommunicationHistoryListed = "İletişim Geçmişi Listelendi!";
         public static string SelectedCommunicationHistory = "Seçili İletişim Geçmişi Bilgisi Alındı!";
         public static string CommunicationHistoryUpdated = "İletişim Geçmişi Bilgisi Güncellendi!";
+
+        //Business Universal Messages;
+        public static string DataAlreadyExist = "Veri Zaten Mevcut!";
     }
 }

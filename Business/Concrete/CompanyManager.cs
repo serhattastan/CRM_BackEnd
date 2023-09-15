@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -23,6 +24,13 @@ namespace Business.Concrete
 
         public IResult Add(Company company)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfCompanyNameExist(company.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _companyDal.Add(company);
             return new SuccessResult(Messages.CompanyAdded);
         }
@@ -52,8 +60,25 @@ namespace Business.Concrete
 
         public IResult Update(Company company)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfCompanyNameExist(company.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _companyDal.Add(company);
             return new SuccessResult(Messages.CompanyUpdated);
+        }
+
+        private IResult CheckIfCompanyNameExist(string companyName)
+        {
+            var result = _companyDal.GetAll(p => p.Name == companyName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.DataAlreadyExist);
+            }
+            return new SuccessResult();
         }
     }
 }

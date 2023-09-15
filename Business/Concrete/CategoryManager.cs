@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Business.Concrete
 {
@@ -23,6 +25,13 @@ namespace Business.Concrete
 
         public IResult Add(Category category)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfCategoryNameExist(category.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _categoryDal.Add(category);
             return new SuccessResult(Messages.CategoryAdded);
         }
@@ -52,8 +61,24 @@ namespace Business.Concrete
 
         public IResult Update(Category category)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfCategoryNameExist(category.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _categoryDal.Add(category);
             return new SuccessResult(Messages.CategoryUpdated);
+        }
+        private IResult CheckIfCategoryNameExist(string categoryName)
+        {
+            var result = _categoryDal.GetAll(p => p.Name == categoryName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.DataAlreadyExist);
+            }
+            return new SuccessResult();
         }
     }
 }

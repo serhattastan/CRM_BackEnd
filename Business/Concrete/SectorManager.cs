@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -23,6 +24,13 @@ namespace Business.Concrete
 
         public IResult Add(Sector sector)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfSectorNameExist(sector.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _sectorDal.Add(sector);
             return new SuccessResult(Messages.SectorAdded);
         }
@@ -52,8 +60,24 @@ namespace Business.Concrete
 
         public IResult Update(Sector sector)
         {
+            IResult result = BusinessRules.Run(
+                CheckIfSectorNameExist(sector.Name)
+                );
+            if (result == null)
+            {
+                return result;
+            }
             _sectorDal.Add(sector);
             return new SuccessResult(Messages.SectorUpdated);
+        }
+        private IResult CheckIfSectorNameExist(string sectorName)
+        {
+            var result = _sectorDal.GetAll(p => p.Name == sectorName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.DataAlreadyExist);
+            }
+            return new SuccessResult();
         }
     }
 }
