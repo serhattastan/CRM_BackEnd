@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -22,6 +24,7 @@ namespace Business.Concrete
             _companyDal = companyDal;
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
             IResult result = BusinessRules.Run(
@@ -58,6 +61,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Company>(_companyDal.Get(p => p.Id == companyId), Messages.SelectedCompany);
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public IResult Update(Company company)
         {
             IResult result = BusinessRules.Run(

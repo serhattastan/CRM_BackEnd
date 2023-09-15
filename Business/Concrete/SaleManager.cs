@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -21,6 +23,7 @@ namespace Business.Concrete
             _saleDal = saleDal;
         }
 
+        [ValidationAspect(typeof(SaleValidator))]
         public IResult Add(Sale sale)
         {
             _saleDal.Add(sale);
@@ -50,6 +53,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Sale>(_saleDal.Get(p => p.Id == saleId), Messages.SelectedSale);
         }
 
+        [ValidationAspect(typeof(SaleValidator))]
         public IResult Update(Sale sale)
         {
             _saleDal.Add(sale);

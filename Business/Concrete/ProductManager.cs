@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Castle.Core.Resource;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -22,6 +24,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             _productDal.Add(product);
@@ -51,6 +54,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Product>(_productDal.Get(p => p.Id == productId), Messages.SelectedProduct);
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Update(Product product)
         {
             _productDal.Add(product);

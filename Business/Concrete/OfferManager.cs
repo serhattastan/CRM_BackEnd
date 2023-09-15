@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Castle.Core.Resource;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -22,6 +24,7 @@ namespace Business.Concrete
             _offerDal = offerDal;
         }
 
+        [ValidationAspect(typeof(OfferValidator))]
         public IResult Add(Offer offer)
         {
             _offerDal.Add(offer);
@@ -51,6 +54,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Offer>(_offerDal.Get(p => p.Id == offerId), Messages.SelectedOffer);
         }
 
+        [ValidationAspect(typeof(OfferValidator))]
         public IResult Update(Offer offer)
         {
             _offerDal.Add(offer);

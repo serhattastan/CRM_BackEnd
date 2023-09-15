@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -15,6 +17,13 @@ namespace Business.Concrete
     public class CommunicationHistoryManager : ICommunicationHistoryService
     {
         ICommunicationHistoryDal _communicationHistoryDal;
+
+        public CommunicationHistoryManager(ICommunicationHistoryDal communicationHistoryDal)
+        {
+            _communicationHistoryDal = communicationHistoryDal;
+        }
+
+        [ValidationAspect(typeof(CommunicationHistoryValidator))]
         public IResult Add(CommunicationHistory communicationHistory)
         {
             _communicationHistoryDal.Add(communicationHistory);
@@ -44,6 +53,7 @@ namespace Business.Concrete
             return new SuccessDataResult<CommunicationHistory>(_communicationHistoryDal.Get(p => p.Id == communicationHistoryId), Messages.SelectedCommunicationHistory);
         }
 
+        [ValidationAspect(typeof(CommunicationHistoryValidator))]
         public IResult Update(CommunicationHistory communicationHistory)
         {
             _communicationHistoryDal.Add(communicationHistory);

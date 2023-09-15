@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -22,6 +24,7 @@ namespace Business.Concrete
             _sectorDal = sectorDal;
         }
 
+        [ValidationAspect(typeof(SectorValidator))]
         public IResult Add(Sector sector)
         {
             IResult result = BusinessRules.Run(
@@ -58,6 +61,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Sector>(_sectorDal.Get(p => p.Id == sectorId), Messages.SelectedSector);
         }
 
+        [ValidationAspect(typeof(SectorValidator))]
         public IResult Update(Sector sector)
         {
             IResult result = BusinessRules.Run(
