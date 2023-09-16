@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,5 +77,13 @@ namespace Business.Constants
 
         //Business Universal Messages;
         public static string DataAlreadyExist = "Veri Zaten Mevcut!";
+
+        //User Login Messages
+        public static string UserRegistered = "Kullanıcı Kaydedildi!";
+        public static string UserNotFound = "Kullanıcı Bulunamadı!";
+        public static string PasswordError = "Eksik veya Hatalı Şifre!";
+        public static string SuccessfulLogin = "Giriş Başarılı!";
+        public static string UserAlreadyExists = "Kullanıcı Kayıtlı!";
+        public static string AccessTokenCreated = "Erişim Anahtarı Oluşturuldu!";
     }
 }
