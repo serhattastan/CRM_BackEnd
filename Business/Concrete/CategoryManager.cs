@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,7 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
+        [SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(CategoryValidator))]
         public IResult Add(Category category)
         {
@@ -39,6 +41,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CategoryAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int categoryId)
         {
             var dataDelete = _categoryDal.Get(p => p.Id == categoryId);
@@ -62,6 +65,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Category>(_categoryDal.Get(p => p.Id == categoryId), Messages.SelectedCategory);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(CategoryValidator))]
         public IResult Update(Category category)
         {

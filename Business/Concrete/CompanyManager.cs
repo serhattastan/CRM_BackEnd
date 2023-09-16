@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -24,6 +25,7 @@ namespace Business.Concrete
             _companyDal = companyDal;
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
@@ -38,6 +40,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CompanyAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int companyId)
         {
             var dataDelete = _companyDal.Get(p => p.Id == companyId);
@@ -61,6 +64,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Company>(_companyDal.Get(p => p.Id == companyId), Messages.SelectedCompany);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Update(Company company)
         {

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -24,6 +25,7 @@ namespace Business.Concrete
             _sectorDal = sectorDal;
         }
 
+        [SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(SectorValidator))]
         public IResult Add(Sector sector)
         {
@@ -38,6 +40,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SectorAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int sectorId)
         {
             var dataDelete = _sectorDal.Get(p => p.Id == sectorId);
@@ -51,16 +54,19 @@ namespace Business.Concrete
             return new ErrorResult(Messages.SectorNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager,marketing_manager")]
         public IDataResult<List<Sector>> GetAll()
         {
             return new SuccessDataResult<List<Sector>>(_sectorDal.GetAll(), Messages.SectorsListed);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager,marketing_manager")]
         public IDataResult<Sector> GetById(int sectorId)
         {
             return new SuccessDataResult<Sector>(_sectorDal.Get(p => p.Id == sectorId), Messages.SelectedSector);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(SectorValidator))]
         public IResult Update(Sector sector)
         {

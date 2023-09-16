@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Castle.Core.Resource;
@@ -24,6 +25,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -31,6 +33,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int productId)
         {
             var dataDelete = _productDal.Get(p => p.Id == productId);
@@ -44,16 +47,19 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CustomerNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager,marketing_manager,sale_manager")]
         public IDataResult<List<Product>> GetAll()
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager,marketing_manager,sale_manager")]
         public IDataResult<Product> GetById(int productId)
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.Id == productId), Messages.SelectedProduct);
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Update(Product product)
         {

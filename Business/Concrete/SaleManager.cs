@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -23,6 +24,7 @@ namespace Business.Concrete
             _saleDal = saleDal;
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         [ValidationAspect(typeof(SaleValidator))]
         public IResult Add(Sale sale)
         {
@@ -30,6 +32,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SaleAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int saleId)
         {
             var dataDelete = _saleDal.Get(p => p.Id == saleId);
@@ -43,16 +46,19 @@ namespace Business.Concrete
             return new ErrorResult(Messages.SaleNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         public IDataResult<List<Sale>> GetAll()
         {
             return new SuccessDataResult<List<Sale>>(_saleDal.GetAll(), Messages.SalesListed);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         public IDataResult<Sale> GetById(int saleId)
         {
             return new SuccessDataResult<Sale>(_saleDal.Get(p => p.Id == saleId), Messages.SelectedSale);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(SaleValidator))]
         public IResult Update(Sale sale)
         {

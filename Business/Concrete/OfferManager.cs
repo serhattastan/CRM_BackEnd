@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspetcs.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Castle.Core.Resource;
@@ -24,6 +25,7 @@ namespace Business.Concrete
             _offerDal = offerDal;
         }
 
+        [SecuredOperation("database_administrator,admin,marketing_manager")]
         [ValidationAspect(typeof(OfferValidator))]
         public IResult Add(Offer offer)
         {
@@ -31,6 +33,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.OfferAdded);
         }
 
+        [SecuredOperation("database_administrator,admin")]
         public IResult Delete(int offerId)
         {
             var dataDelete = _offerDal.Get(p => p.Id == offerId);
@@ -44,16 +47,19 @@ namespace Business.Concrete
             return new ErrorResult(Messages.OfferNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,marketing_manager")]
         public IDataResult<List<Offer>> GetAll()
         {
             return new SuccessDataResult<List<Offer>>(_offerDal.GetAll(), Messages.OffersListed);
         }
 
+        [SecuredOperation("database_administrator,admin,marketing_manager")]
         public IDataResult<Offer> GetById(int offerId)
         {
             return new SuccessDataResult<Offer>(_offerDal.Get(p => p.Id == offerId), Messages.SelectedOffer);
         }
 
+        [SecuredOperation("database_administrator,admin,marketing_manager")]
         [ValidationAspect(typeof(OfferValidator))]
         public IResult Update(Offer offer)
         {
