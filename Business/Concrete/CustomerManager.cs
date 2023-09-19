@@ -47,11 +47,13 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CustomerNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager,marketing_manager")]
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomersListed);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager,marketing_manager")]
         public IDataResult<Customer> GetById(int customerId)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(p => p.Id == customerId), Messages.SelectedCustomer);

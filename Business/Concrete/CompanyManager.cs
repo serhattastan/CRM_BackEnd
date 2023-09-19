@@ -54,11 +54,13 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CompanyNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         public IDataResult<List<Company>> GetAll()
         {
             return new SuccessDataResult<List<Company>>(_companyDal.GetAll(), Messages.CompaniesListed);
         }
 
+        [SecuredOperation("database_administrator,admin,sale_manager")]
         public IDataResult<Company> GetById(int companyId)
         {
             return new SuccessDataResult<Company>(_companyDal.Get(p => p.Id == companyId), Messages.SelectedCompany);

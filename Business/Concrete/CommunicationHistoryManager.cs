@@ -7,6 +7,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,11 @@ namespace Business.Concrete
         public IDataResult<CommunicationHistory> GetById(int communicationHistoryId)
         {
             return new SuccessDataResult<CommunicationHistory>(_communicationHistoryDal.Get(p => p.Id == communicationHistoryId), Messages.SelectedCommunicationHistory);
+        }
+
+        public IDataResult<List<CommunicationHistoryDto>> GetCommunicationHistoryDetails()
+        {
+            return new SuccessDataResult<List<CommunicationHistoryDto>>(_communicationHistoryDal.GetCommunicationHistoryDetail());
         }
 
         [SecuredOperation("database_administrator,admin,marketing_manager")]
