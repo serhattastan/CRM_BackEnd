@@ -60,6 +60,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Offer>(_offerDal.Get(p => p.Id == offerId), Messages.SelectedOffer);
         }
 
+        [SecuredOperation("database_administrator,admin,marketing_manager")]
         public IDataResult<List<OfferDetailDto>> GetOfferDetails()
         {
             return new SuccessDataResult<List<OfferDetailDto>>(_offerDal.GetOfferDetail());

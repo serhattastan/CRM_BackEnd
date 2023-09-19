@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,8 @@ namespace Business.Abstract
         IResult Add(Sale sale);
         IResult Update(Sale sale);
         IResult Delete(int saleId);
+
+        //DTOs
+        IDataResult<List<SaleDetailDto>> GetSaleDetails();
     }
 }

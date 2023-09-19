@@ -55,11 +55,13 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CategoryNotFound);
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager,marketing_manager,sale_manager")]
         public IDataResult<List<Category>> GetAll()
         {
             return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoriesListed);
         }
 
+        [SecuredOperation("database_administrator,admin,product_manager,marketing_manager,sale_manager")]
         public IDataResult<Category> GetById(int categoryId)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(p => p.Id == categoryId), Messages.SelectedCategory);

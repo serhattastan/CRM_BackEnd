@@ -7,6 +7,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,12 @@ namespace Business.Concrete
         public IDataResult<Sale> GetById(int saleId)
         {
             return new SuccessDataResult<Sale>(_saleDal.Get(p => p.Id == saleId), Messages.SelectedSale);
+        }
+
+        [SecuredOperation("database_administrator,admin,sale_manager")]
+        public IDataResult<List<SaleDetailDto>> GetSaleDetails()
+        {
+            return new SuccessDataResult<List<SaleDetailDto>>(_saleDal.GetSaleDetail());
         }
 
         [SecuredOperation("database_administrator,admin")]
