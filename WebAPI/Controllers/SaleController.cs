@@ -26,6 +26,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getallbydetails")]
+        public IActionResult GetAllByDetails()
+        {
+            var result = _saleService.GetSaleDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbyid")]
         public IActionResult GetById(int saleId)
         {
