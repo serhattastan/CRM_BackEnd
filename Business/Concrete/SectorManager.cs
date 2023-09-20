@@ -25,17 +25,10 @@ namespace Business.Concrete
             _sectorDal = sectorDal;
         }
 
-        [SecuredOperation("database_administrator,admin")]
+        //[SecuredOperation("database_administrator,admin")]
         [ValidationAspect(typeof(SectorValidator))]
         public IResult Add(Sector sector)
         {
-            IResult result = BusinessRules.Run(
-                CheckIfSectorNameExist(sector.Name)
-                );
-            if (result == null)
-            {
-                return result;
-            }
             _sectorDal.Add(sector);
             return new SuccessResult(Messages.SectorAdded);
         }
@@ -70,19 +63,13 @@ namespace Business.Concrete
         [ValidationAspect(typeof(SectorValidator))]
         public IResult Update(Sector sector)
         {
-            IResult result = BusinessRules.Run(
-                CheckIfSectorNameExist(sector.Name)
-                );
-            if (result == null)
-            {
-                return result;
-            }
             _sectorDal.Add(sector);
             return new SuccessResult(Messages.SectorUpdated);
         }
-        private IResult CheckIfSectorNameExist(string sectorName)
+
+        private IResult CheckIfSectorNameExist(Sector sector)
         {
-            var result = _sectorDal.GetAll(p => p.Name == sectorName).Any();
+            var result = _sectorDal.GetAll(p => p.Name == sector.Name).Any();
             if (result)
             {
                 return new ErrorResult(Messages.DataAlreadyExist);

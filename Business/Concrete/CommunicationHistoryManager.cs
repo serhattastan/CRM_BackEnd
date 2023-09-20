@@ -47,7 +47,7 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CommunicationHistoryNotFound);
         }
 
-        [SecuredOperation("database_administrator,admin,marketing_manager,analyst")]
+        //[SecuredOperation("database_administrator,admin,marketing_manager,analyst")]
         public IDataResult<List<CommunicationHistory>> GetAll()
         {
             return new SuccessDataResult<List<CommunicationHistory>>(_communicationHistoryDal.GetAll(), Messages.CommunicationHistoryListed);
@@ -59,8 +59,8 @@ namespace Business.Concrete
             return new SuccessDataResult<CommunicationHistory>(_communicationHistoryDal.Get(p => p.Id == communicationHistoryId), Messages.SelectedCommunicationHistory);
         }
 
-        [SecuredOperation("database_administrator,admin,marketing_manager,analyst")]
-        public IDataResult<List<CommunicationHistoryDto>> GetCommunicationHistoryDetails()
+        //[SecuredOperation("database_administrator,admin,marketing_manager,analyst")]
+        public IDataResult<List<CommunicationHistoryDto>> GetCommunicationHistoryDetail()
         {
             return new SuccessDataResult<List<CommunicationHistoryDto>>(_communicationHistoryDal.GetCommunicationHistoryDetail());
         }

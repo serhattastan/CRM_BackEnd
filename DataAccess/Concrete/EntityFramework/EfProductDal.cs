@@ -23,7 +23,6 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  ProductId = p.Id,
                                  ProductName = p.Name,
-                                 Stock = p.Stock,
                                  CategoryName = c.Name
                              };
                 return result.ToList();

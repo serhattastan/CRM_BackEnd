@@ -18,6 +18,6 @@ namespace Business.Abstract
         IResult Delete(int communicationHistoryId);
 
         //DTOs
-        IDataResult<List<CommunicationHistoryDto>> GetCommunicationHistoryDetails();
+        IDataResult<List<CommunicationHistoryDto>> GetCommunicationHistoryDetail();
     }
 }

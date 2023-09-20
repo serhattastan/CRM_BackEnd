@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         [HttpGet("getallbydetails")]
         public IActionResult GetAllByDetails()
         {
-            var result = _communicationHistoryService.GetCommunicationHistoryDetails();
+            var result = _communicationHistoryService.GetCommunicationHistoryDetail();
             if (result.Success)
             {
                 return Ok(result);

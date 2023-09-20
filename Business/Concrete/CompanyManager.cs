@@ -30,13 +30,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
-            IResult result = BusinessRules.Run(
-                CheckIfCompanyNameExist(company.Name)
-                );
-            if (result == null)
-            {
-                return result;
-            }
             _companyDal.Add(company);
             return new SuccessResult(Messages.CompanyAdded);
         }
@@ -77,14 +70,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Update(Company company)
         {
-            IResult result = BusinessRules.Run(
-                CheckIfCompanyNameExist(company.Name)
-                );
-            if (result == null)
-            {
-                return result;
-            }
-            _companyDal.Add(company);
             return new SuccessResult(Messages.CompanyUpdated);
         }
 
