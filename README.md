@@ -10,16 +10,25 @@ Bu uygulama, müşteri ilişkilerini yönetmek ve takip etmek için kullanılan 
 - Güvenli veritabanı yönetimi.
 - Kullanıcı dostu arayüz.
 
-## Başlama
+## Uygulama Görselleri
 
-Uygulamayı yerel bir makinede başlatmak için aşağıdaki adımları izleyin:
-git clone https://github.com/KULLANICI_ADI/CRM-Uygulamasi-Backend.git
-cd CRM-Uygulamasi-Backend
-dotnet run
+![Screenshot_1](https://github.com/serhattastan/CRM_BackEnd/assets/87541365/2059bf9f-7171-4c39-9833-34f315f19a76)
+
+![Screenshot_2](https://github.com/serhattastan/CRM_BackEnd/assets/87541365/e9580ad6-5c80-4b87-91be-0493a1f3077e)
+
+![Screenshot_4](https://github.com/serhattastan/CRM_BackEnd/assets/87541365/d17d4069-c686-4108-9a29-cbdefaae58b4)
+
+![Screenshot_6](https://github.com/serhattastan/CRM_BackEnd/assets/87541365/dad2e551-0cb6-4fbe-883f-479808eafbbc)
+
+![Screenshot_7](https://github.com/serhattastan/CRM_BackEnd/assets/87541365/cf6164a5-9ad8-4036-931c-c2331588aea5)
+
 
 
 ## Katkıda Bulunma
 
 Katkıda bulunmak veya sorunları raporlamak isterseniz, lütfen bir çekme isteği (pull request) gönderin veya sorunları (issue) açın. Katkılarınızı bekliyoruz!
+
+
+
 
 
