@@ -26,10 +26,6 @@ Bu uygulama, müşteri ilişkilerini yönetmek ve takip etmek için kullanılan 
 
 
 
-## Katkıda Bulunma
-
-Katkıda bulunmak veya sorunları raporlamak isterseniz, lütfen bir çekme isteği (pull request) gönderin veya sorunları (issue) açın. Katkılarınızı bekliyoruz!
-
 
 
 
