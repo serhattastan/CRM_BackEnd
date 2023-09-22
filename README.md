@@ -8,7 +8,9 @@ Bu uygulama, müşteri ilişkilerini yönetmek ve takip etmek için kullanılan 
 
 - Müşteri verilerini kaydetme, güncelleme, silme ve sorgulama.
 - Güvenli veritabanı yönetimi.
-- Kullanıcı dostu arayüz.
+- Müşteri iletişim yönetimi.
+- Satış takibi.
+- Ürün yönetimi.
 
 ## Uygulama Görselleri
 
